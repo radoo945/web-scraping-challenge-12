@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en-us">
+
+<head>
+    <meta charset="UTF-8">
+    <!-- bootstrap's responsive meta tag -->
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <title>Mission to Mars</title>
+
+    <!-- bootstrap css links and script -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+
+    <!-- Google fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Anton&family=Playfair+Display:wght@500;700&family=Roboto&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" type="text/css" href="{{url_for('static', filename='css/styles.css')}}">
+
+</head>
+
+<body class="bg-dark">
+    <div class="container-fluid p-0">
+        <div class="jumbotron jumbotron-fluid m-0 text-center bg-mars-red">
+            <h1 class="text-light header-font mb-3">Mission to Mars</h1>
+            <p><a class="btn btn-light btn-md" href="/scrape" role="button">Scrape New Data</a></p>
+        </div>
+
+        <div class="row px-4 pt-4 mt-3">
+            <div class="col-12">
+                <h3 class="mini-header-font mb-3">Latest Mars News</h3>
+                <h5 class="headline">{{ info.news_title }}</h5>
+                <p class="font-weight-light">{{ info.news_para }}</p>
+            </div>
+        </div>
+
+        <div class="row p-4">
+            <div class="col-sm-12 col-md-7">
+                <h3 class="mini-header-font mb-3">Featured Space Image</h4>
+                    <p class=" font-weight-light ">{{ info.featuredimage_title }}</p>
+                    <img class="img-fluid " src={{info.featuredimage_url}} alt="Card image cap ">
+                    <caption><small>Source: <a class="link" target="blank_ " href="https://www.jpl.nasa.gov/spaceimages/?search=&category=Mars ">jpl.nasa.gov</a></small></caption>
+            </div>
+
+            <div class="col-sm-12 col-md-5 pt-2 ">
+                <div class="card bg-grey-card ">
+                    <div class="card-header bg-mars-red ">
+                        <h6 class="text-light m-auto mini-header-font ">Mars Weather Information</h6>
+                    </div>
+                    <div class=" card-body ">
+                        <p class="font-weight-light ">{{ info.latest_tweet }}</p>
+                        <caption><small>Source: <a class="link" target="blank_ " href="https://twitter.com/marswxreport ">@marswxreport</a></small></caption>
+                    </div>
+                </div>
+                <br>
+                <div class="card bg-grey-card ">
+                    <div class="card-header bg-mars-red ">
+                        <h6 class="mini-header text-light m-0 mini-header-font ">Mars Planet Profile</h6>
+                    </div>
+                    <div class="card-body table-responsive ">
+                        {{info.mars_fact_table|safe}}
+                        <caption><small>Source: <a class="link" href="https://space-facts.com/mars/ ">Space Facts</a></small></caption>
+
+                    </div>
+                </div>
+
+            </div>
+        </div>
+
+        <div class="row mt-5 mb-3 ">
+            <div class="col-12 ">
+                <h3 class="text-center mini-header-font ">Mars Hemispheres</h3>
+            </div>
+        </div>
+
+        <div class="row mb-3">
+            <div class="card-deck mx-auto ">
+                <div class="card bg-grey-card" style="width: 24rem; ">
+                    <img class="card-img-top img-fluid " src={{info.hemisphere_images[0].img_url}} alt={{info.hemisphere_images[0].title}}>
+                    <div class="card-body ">
+                        <p class="card-text text-center "><strong>{{info.hemisphere_images[0].title}}</strong></p>
+                    </div>
+                </div>
+
+                <div class="card bg-grey-card" style="width: 24rem; ">
+                    <img class="card-img-top img-fluid " src={{info.hemisphere_images[1].img_url}} alt={{info.hemisphere_images[1].title}}>
+                    <div class="card-body ">
+                        <p class="card-text text-center "><strong>{{info.hemisphere_images[1].title}}</strong></p>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+
+        <div class="row mt-2 mb-4">
+            <div class="card-deck mx-auto ">
+                <div class="card bg-grey-card" style="width: 24rem; ">
+                    <img class="card-img-top img-fluid " src={{info.hemisphere_images[2].img_url}} alt={{info.hemisphere_images[2].title}}>
+                    <div class="card-body ">
+                        <p class="card-text text-center "><strong>{{info.hemisphere_images[2].title}}</strong></p>
+                    </div>
+                </div>
+
+                <div class="card bg-grey-card" style="width: 24rem; ">
+                    <img class="card-img-top img-fluid " src={{info.hemisphere_images[3].img_url}} alt={{info.hemisphere_images[3].title}}>
+                    <div class="card-body ">
+                        <p class="card-text text-center "><strong>{{info.hemisphere_images[3].title}}</strong></p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <footer class="bg-mars-red">
+            <div>
+                <p class="text-light text-center p-3 m-0">A <a class="foot-a" href="https://github.com/radoo945/web-scraping-challenge-12">Web Scraping Project</a> by Neha Nayeem &#169; 2020</p>
+            </div>
+
+        </footer>
+        <!-- Bootstrap javascript tags -->
+        <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+        <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js " integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN " crossorigin="anonymous "></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js " integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q " crossorigin="anonymous "></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js " integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl " crossorigin="anonymous "></script>
+</body>
+
+
+
+</html>
